@@ -139,10 +139,13 @@ def load_fine_tune_model(base_model_id, saved_weights,args):
 
     return lora_model, tokenizer
 
-# base_model_id="meta-llama/Llama-3.2-1B-Instruct"
-# lora_weights="LLAMA32_fine_tuned.pth"
-# model_ft,tokenizer=load_fine_tune_model(base_model_id,lora_weights,script_args)
 
-# # Generate with ft model: adjust temperature and top_k for different outputs
-# prompt="Explain the function of human heart"
-# print(generate(model_ft, prompt, tokenizer, max_new_tokens=100,temperature=0.8,top_k=10))
+if __name__=="__main__":
+    base_model_id="meta-llama/Llama-3.2-1B-Instruct"
+    lora_weights="LLAMA32_fine_tuned.pth"
+    print(f"Loading model...")
+    model_ft,tokenizer=load_fine_tune_model(base_model_id,lora_weights,script_args)
+    print(f"Model loaded: {sum(p.numel() for p in model_ft.parameters()):,} parameters")
+    # Generate with ft model: adjust temperature and top_k for different outputs
+    prompt="Explain the function of human heart"
+    print(f"Model response:\n\n{generate(model_ft, prompt, tokenizer, max_new_tokens=100,temperature=0.8,top_k=10)}")
