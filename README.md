@@ -9,3 +9,6 @@ This repository demonstrates the process of fine-tuning the **LLAMA 3.2 1B** on 
 ### Evaluation 
 The fine-tuned model is evaluated using the **LLAMA 3 (8 billion)** model from **OLLAMA**. The evaluation yields an average score of 76.43.
 
+### Interactive API with chainlit
+Interact with the fine-tuned model through a web API by running the command **chainlit run app.py**. This will launch an interactive interface for the model.
+
